@@ -192,8 +192,11 @@ db.createCollection('sales', {
 	validator: {
 		$jsonSchema: {
 			bsonType : "object",
-			required: ["customer", "employee", "glasses_sold"],
+			required: ["_id", "customer", "employee", "glasses_sold"],
 			properties: {
+				_id: {
+					bsonType: "string",
+				},
 				customer: {
 					bsonType: "string",
 					description: "customer id from customer collection"
@@ -296,7 +299,7 @@ db.customers.insertMany([
 	}
 ])
 
-db.brand.insertMany([
+db.brands.insertMany([
 	{
 		_id: "B001",
 		name: "Brand 1",
